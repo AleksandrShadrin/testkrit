@@ -2,8 +2,7 @@
 
 var connectionString = "Host=localhost;Port=5432;Username=postgres;Password=secret;Database=postgres";
 
-var valueService = new TValueService(connectionString);
-
+var valueRepository = new TValueRepository(connectionString);
 var resourceRepository = new ResourceRepository(connectionString);
 var yearRepository = new YearRepository(connectionString);
 var indicatorRepository = new IndicatorRepository(connectionString);
@@ -20,7 +19,7 @@ foreach (var indicator in indicators)
     {
         foreach (var year in years)
         {
-            var mValues = await valueService.GetTValues(indicator, resource, year);
+            var mValues = await valueRepository.GetTValues(indicator, resource, year);
 
             while (true)
             {

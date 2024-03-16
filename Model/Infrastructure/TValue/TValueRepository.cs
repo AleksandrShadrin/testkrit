@@ -3,17 +3,11 @@ using Npgsql;
 
 namespace Model.Infrastructure;
 
-public interface ITValueService
-{
-    Task<List<TValue>> GetTValues(Indicator indicator, Resource resource, Year year);
-    Task<List<TValue>> GetTValues();
-}
-
-public class TValueService : ITValueService
+public class TValueRepository
 {
     private readonly string _connectionString;
 
-    public TValueService(string connectionString)
+    public TValueRepository(string connectionString)
     {
         _connectionString = connectionString;
     }
